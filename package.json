@@ -1,5 +1,16 @@
 {
   "dependencies": {
     "gh-pages": "^2.2.0"
-  }
+  },
+  "name": "snake-game",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "gh-pages -d build"
+  },
+  "description": "A snake game for my children",
+  "main": "index.js",
+  "homepage": "https://wptechprodigy.gihub.io/snake-game",
+  "repository": "git@github.com:wptechprodigy/snake-game.git",
+  "author": "wptechprodigy <waheed.freelancer16@gmail.com>",
+  "license": "MIT"
 }
