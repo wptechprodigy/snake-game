@@ -3,8 +3,9 @@ let ctx;
 let currentScore;
 let currentLevel;
 let score = 0;
+let level = 0;
+let x = 0;
 const BASE_SCORE = 10;
-const BASE_LEVEL = 1;
 
 window.onload = () => {
   canvas = document.getElementById('canvas');
@@ -14,11 +15,11 @@ window.onload = () => {
 
   document.addEventListener('keydown', keyDownEvent);
 
-  currentLevel.innerText = BASE_LEVEL;
+  currentLevel.innerText = level;
   currentScore.innerText = score;
 
   // render X times per second
-	const x = 8;
+	x = 8;
 	setInterval(draw, 1000 / x);
 };
 
@@ -88,6 +89,13 @@ function draw() {
   if (snakeX === appleX && snakeY === appleY) {
     tailSize++;
     score += BASE_SCORE
+
+    if (score % 100 === 0) {
+      level++;
+      x = 10;
+      currentLevel.innerText = level;
+    }
+
     currentScore.innerText = score;
     appleX = Math.floor(Math.random() * gridSize);
     appleY = Math.floor(Math.random() * gridSize);
@@ -112,7 +120,9 @@ function draw() {
     if (snakeTrail[i].x === snakeX && snakeTrail[i].y === snakeY) {
       tailSize = DEFAULTTAILSIZE;
       score = 0;
+      level = 0;
       currentScore.innerText = score;
+      currentLevel.innerText = level;
     }
   }
 
